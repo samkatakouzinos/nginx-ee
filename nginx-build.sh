@@ -606,7 +606,7 @@ else
 fi
 
 ##################################
-# Download and patch OpenSSL
+# Download OpenSSL
 ##################################
 
 echo -ne '       Downloading openssl                    [..]\r'
@@ -614,11 +614,6 @@ echo -ne '       Downloading openssl                    [..]\r'
 {
     git clone https://github.com/openssl/openssl.git $DIR_SRC/openssl
     cd ${DIR_SRC}/openssl || exit 1
-} >>/tmp/nginx-ee.log 2>&1
-
-{
-    # apply openssl ciphers patch
-    curl https://raw.githubusercontent.com/VirtuBox/openssl-patch/master/openssl-equal-3.0.0-dev_ciphers.patch | patch -p1
 } >>/tmp/nginx-ee.log 2>&1
 
 if [ $? -eq 0 ]; then
